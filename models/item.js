@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const itemSchema = new mongoose.Schema({
     name: { type: String, required: true },
     category: { type: String, required: true },
-    quantity: { type: Number, required: true },
-    price: { type: Number, required: true }
+    quantity: { type: Number, default: 0 },
+    price: { type: Number, required: true },
+    description: { type: String, default: '' },
+    createdAt: { type: Date, default: Date.now }
 });
 
-const Item = mongoose.model('Item', itemSchema);
-
-module.exports = Item;
+module.exports = mongoose.model('Item', itemSchema);
